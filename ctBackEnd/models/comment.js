@@ -5,9 +5,7 @@ const replySchema = new mongoose.Schema({
     likes:{type:Number, default:0},
     dislikes: {type:Number, default:0},
     date:{type: Date, default:Date.now}
-});
-
-const Reply = mongoose.model('Reply', replySchema);
+})
 ​
 const commentSchema = new mongoose.Schema({
     text:{type: String, required: true, minlength:2, maxlength:300},
@@ -16,9 +14,7 @@ const commentSchema = new mongoose.Schema({
     replies:[{type: replySchema}],
     videoId: {type:String, required:true},
     date:{type:Date, default:Date.now}
-});
-
-const Comment = mongoose.model('comment', commentSchema);
+})
 ​
-exports.Reply = Reply;
-exports.Comment = Comment;
+module.exports = mongoose.model("Comment", commentSchema);
+module.exports = mongoose.model("Reply", replySchema);
