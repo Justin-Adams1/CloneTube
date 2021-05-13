@@ -4,9 +4,9 @@ const {Comment, Reply} = require('../models/comment')
 
 // GET ALL COMMENTS
 
-router.get('/comments', async (req,res)=>{
+router.get('/:videoId', async (req,res)=>{
     try{
-        const comment = await Comment.find();
+        const comment = await Comment.find({videoId: req.params.videoId});
         return res.send(comment);
     }catch(ex){
         return res.status(500).send(`Internal Server Error: ${ex}`);
@@ -15,10 +15,11 @@ router.get('/comments', async (req,res)=>{
 
 //POST A COMMENT
 
-router.post('/comment', async (req,res)=>{
+router.post('/:videoId', async (req,res)=>{
         try{
             const comment = new Comment({
-            text: req.body.params
+            videoId: req.body.params.videoId,
+            text: req.body.params.text
             });
     
             await comment.save();
@@ -31,7 +32,7 @@ router.post('/comment', async (req,res)=>{
 //POST A REPLY
 router.post('/:commentId', async (req,res)=>{
     try{
-        const comment = await Comment.findById(req.params.commentId);
+        const comment = await Comment.findById({commentId: req.params.commentId});
     
         const reply = new Reply({
             text: req.params.body

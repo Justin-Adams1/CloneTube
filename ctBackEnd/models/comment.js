@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose');n
 ​
 const replySchema = new mongoose.Schema({
     text:{type: String, required: true, minlength:2, maxlength:300},
