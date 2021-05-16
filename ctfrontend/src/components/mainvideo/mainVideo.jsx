@@ -11,6 +11,10 @@ const MainVideo =(props)=>{
                 frameborder="0">
                 </iframe>
             </div>
+            <div>
+                <button>Like</button>
+                <button>Dislike</button>
+            </div>
         </div>
     )
 }

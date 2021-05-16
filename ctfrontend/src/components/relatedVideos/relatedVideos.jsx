@@ -2,7 +2,7 @@ import './relatedVideos.css'
 
 const RelatedVideos =(props)=>{
     return(
-        <div>
+        <div className="related-videos-container">
             <div className="related-videos">
                 <div className ="video-title">
                     <h4>video title</h4>
