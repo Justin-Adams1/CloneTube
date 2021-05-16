@@ -2,11 +2,11 @@ import {useState} from 'react';
 import {useEffect} from 'react';
 import './App.css';
 import axios from 'axios';
+import Title from './components/title/title'
 import SearchBar from './components/searchbar/searchBar'
-import RelatedVideos from './components/relatedVideos';
+import RelatedVideos from './components/relatedVideos/relatedVideos';
 import MainVideo from './components/mainvideo/mainVideo';
-import Comments from './components/comments';
-const config = require('./config/default.json')
+import Comments from './components/comments/comments';
 
 function App(){
 
@@ -30,11 +30,19 @@ function App(){
 
   return(
     <>
-      <SearchBar setSearchString = {setSearchString}/>
-      <RelatedVideos />
-      <MainVideo />
-      <Comments />
-      
+      <div>
+        <Title/>
+      </div>
+      <div>
+        <SearchBar setSearchString = {setSearchString}/>
+      </div>
+      <div className="videos">
+        <RelatedVideos />
+        <MainVideo />
+      </div>
+      <div>
+        <Comments />
+      </div>
     </>
   )
   }

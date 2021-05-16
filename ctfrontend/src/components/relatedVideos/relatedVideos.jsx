@@ -1,3 +1,5 @@
+import './relatedVideos.css'
+
 const RelatedVideos =(props)=>{
     return(
         <div>

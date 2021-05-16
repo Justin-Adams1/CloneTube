@@ -3,7 +3,7 @@ const MainVideo =(props)=>{
     return(
         <div className="container">
             <div className="title-video">
-                <h3>Video Title</h3>
+                <h2>Video Title</h2>
             </div>
             <div className="videos">
             <iframe id="ytplayer" type="text/html" width="800" height="400"

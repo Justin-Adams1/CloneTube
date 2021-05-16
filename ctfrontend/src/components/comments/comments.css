@@ -1,0 +1,16 @@
+
+
+.comment-box{
+    margin-left: 95px;
+}
+
+button{
+    background-color: red;
+}
+textarea{
+    border-radius: 5px;
+}
+
+.replies{
+    margin-left: 350px
+}
