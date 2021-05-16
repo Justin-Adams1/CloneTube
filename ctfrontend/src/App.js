@@ -37,8 +37,8 @@ function App(){
         <SearchBar setSearchString = {setSearchString}/>
       </div>
       <div className="videos">
-        <RelatedVideos />
         <MainVideo />
+        <RelatedVideos />
       </div>
       <div>
         <Comments />

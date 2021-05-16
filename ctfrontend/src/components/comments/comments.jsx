@@ -4,7 +4,7 @@ import Replies from '../replies/replies'
 const Comments = (props)=>{
     return(
         <div className="container">
-            <div>
+            <div className="buttons">
                 <button>Like</button>
                 <button>Dislike</button>
             </div>
