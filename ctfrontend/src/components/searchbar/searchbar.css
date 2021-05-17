@@ -1,7 +1,6 @@
 .searchbar{
     margin-top: 10px;
-    display: flex;
-    justify-content: center;
+    margin-left: 150px;
 }
 input{
     width: 30vw;

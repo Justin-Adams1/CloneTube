@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "config": "^3.3.6",
+    "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "modules": "^0.4.0",
     "mongoose": "^5.12.8",

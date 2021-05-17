@@ -1,3 +1,4 @@
+import { PromiseProvider } from 'mongoose';
 import './mainvideo.css'
 const MainVideo =(props)=>{
     return(
@@ -7,7 +8,7 @@ const MainVideo =(props)=>{
             </div>
             <div className="videos">
             <iframe id="ytplayer" type="text/html" width="800" height="400"
-                src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
+                src={props.videoRef}
                 frameborder="0">
                 </iframe>
             </div>
