@@ -20,7 +20,7 @@ function App(){
   
   useEffect(()=>{
     axios
-    .get(`https://www.googleapis.com/youtube/v3/search?q=dogs&key=${apiKEY}`)
+    .get(`https://www.googleapis.com/youtube/v3/search?q=${searchString}&key=${apiKEY}`)
     .then(response => getVideoId(response.data.items[0].id.videoId))
     
     // axios
