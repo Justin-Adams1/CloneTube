@@ -18,7 +18,8 @@ router.get('/:videoId', async (req,res)=>{
 router.post('/:videoId', async (req,res)=>{
         try{
             const comment = new Comment({
-            text: req.body.text
+            text: req.body.text,
+            videoId: req.params.videoId
             });
     
             await comment.save();

@@ -16,6 +16,7 @@ function App(){
   const [videoId, getVideoId] = useState('');
   const [comment, getComment] = useState([]);
   const [searchString, setSearchString] = useState('')
+  const [relatedVideos, getRelatedVideos] = useState([]);
   const apiKEY = process.env.REACT_APP_MY_API_KEY
   
   useEffect(()=>{
@@ -28,6 +29,14 @@ function App(){
     //   .then(response => getComment(response.data))
     
   },[searchString]);
+
+  useEffect(()=>{
+    axios
+    .get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${searchString}&key=${apiKEY}`)
+    .then(response => getRelatedVideos(response.data.items))
+    console.log(relatedVideos)
+
+  }, [searchString])
   
   const videoRef = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`
 
@@ -46,7 +55,7 @@ function App(){
         <RelatedVideos />
       </div>
       <div>
-        <Comments />
+        <Comments videoComments = {comment}/>
       </div>
     </>
   )
