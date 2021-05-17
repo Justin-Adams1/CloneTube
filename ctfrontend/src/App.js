@@ -7,7 +7,7 @@ import SearchBar from './components/searchbar/searchBar'
 import RelatedVideos from './components/relatedVideos/relatedVideos';
 import MainVideo from './components/mainvideo/mainVideo';
 import Comments from './components/comments/comments';
-require('dotenv').config();
+import {Key} from './key.js';
 
 function App(){
 
@@ -15,9 +15,9 @@ function App(){
 
   const [videoId, getVideoId] = useState('');
   const [comment, getComment] = useState([]);
-  const [searchString, setSearchString] = useState('')
+  const [searchString, setSearchString] = useState('');
   const [relatedVideos, getRelatedVideos] = useState([]);
-  const apiKEY = process.env.REACT_APP_MY_API_KEY
+  const apiKEY = Key;
   
   useEffect(()=>{
     axios

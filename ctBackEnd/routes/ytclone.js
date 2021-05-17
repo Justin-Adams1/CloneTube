@@ -47,4 +47,37 @@ router.post('/:commentId', async (req,res)=>{
     }
 });
 
+//PUT add a like
+
+router.put('/:videoId', async (req,res)=>{
+    try{
+        const comment = await Comment.findById({
+        text: req.body.text,
+        videoId: req.params.videoId
+        });
+
+        await comment.save();
+        const comments = await Comment.find()
+        return res.send(comments);
+    }catch(ex){
+        return res.status(500).send(`Internal Server Error: ${ex}`);
+    }
+});
+//PUT add a dislike
+
+router.post('/:videoId', async (req,res)=>{
+    try{
+        const comment = new Comment({
+        text: req.body.text,
+        videoId: req.params.videoId
+        });
+
+        await comment.save();
+        const comments = await Comment.find()
+        return res.send(comments);
+    }catch(ex){
+        return res.status(500).send(`Internal Server Error: ${ex}`);
+    }
+});
+
 module.exports = router;
