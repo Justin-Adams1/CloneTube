@@ -8,14 +8,14 @@ const SearchBar = (props)=>{
         
     }   
 
-    const handleClick = (search)=>{
+    const handleClick = ()=>{
         props.setSearchString(search)
     }
      return(
         <div className="searchbar">
             <div className="search-object">
                 <input type="text" name="search" id="" value={search} placeholder="Search for video" className="seachbox" onChange={handleChange}/> 
-                <button onClick={handleClick(search)}>Search</button>
+                <button onClick={handleClick}>Search</button>
             </div>
         </div>
     )
