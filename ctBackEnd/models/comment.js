@@ -16,5 +16,10 @@ const commentSchema = new mongoose.Schema({
     date:{type:Date, default:Date.now}
 })
 
-module.exports = mongoose.model("Comment", commentSchema);
-module.exports = mongoose.model("Reply", replySchema);
+const Comment = mongoose.model('comment', commentSchema);
+const Reply = mongoose.model('reply', replySchema )
+
+exports.Reply = Reply
+exports.Comment = Comment
+exports.commentSchema = commentSchema;
+exports.replySchema = replySchema;

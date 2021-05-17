@@ -7,6 +7,7 @@ const Comment = require('./routes/ytclone');
 connectDB();
 app.use(cors());
 app.use(express.json());
+app.use('/api/ytclone', Comment)
 
 const port = process.env.PORT || 5000;
 app.listen(port, ()=>{

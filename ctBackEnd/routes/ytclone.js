@@ -18,12 +18,12 @@ router.get('/:videoId', async (req,res)=>{
 router.post('/:videoId', async (req,res)=>{
         try{
             const comment = new Comment({
-            videoId: req.body.params.videoId,
-            text: req.body.params.text
+            text: req.body.text
             });
     
             await comment.save();
-            return res.send(comment);
+            const comments = await Comment.find()
+            return res.send(comments);
         }catch(ex){
             return res.status(500).send(`Internal Server Error: ${ex}`);
         }
@@ -35,7 +35,8 @@ router.post('/:commentId', async (req,res)=>{
         const comment = await Comment.findById({commentId: req.params.commentId});
     
         const reply = new Reply({
-            text: req.params.body
+            text: req.params.body,
+            videoId: req.params.body
         });
         await comment.save();
         const comments = await Comment.find();
