@@ -36,7 +36,9 @@ const RelatedVideos =(props)=>{
                     <p>this is a description</p>
                 </div>
             </div>
+            <div>
 
+            </div>
         </div>
     )
 }

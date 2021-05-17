@@ -18,8 +18,7 @@ function App(){
   const [searchString, setSearchString] = useState('')
   const apiKEY = process.env.REACT_APP_MY_API_KEY
   
-  useEffect((searchString)=>{
-    
+  useEffect(()=>{
     axios
     .get(`https://www.googleapis.com/youtube/v3/search?q=dogs&key=${apiKEY}`)
     .then(response => getVideoId(response.data.items[0].id.videoId))
@@ -28,9 +27,11 @@ function App(){
     //   .get(`http://localhost:5000/api/${videoId}`)
     //   .then(response => getComment(response.data))
     
-  },[]);
+  },[searchString]);
   
   const videoRef = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`
+
+  // ADD A COMMENT 
 
   return(
     <>
