@@ -32,14 +32,14 @@ function App(){
   useEffect(()=>{ //get related videos
     axios
     .get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${searchString}&key=${apiKEY}`)
-    .then(response => getRelatedVideos(response.data.items))
+    .then(response => getRelatedVideos(response.data))
     console.log(relatedVideos)
 
   }, [searchString])
 
   useEffect(()=>{ //get attached comment
     axios
-    .get(`http://localhost:5000/api/ytclone/JuYeHPFR3f0`)
+    .get(`http://localhost:5000/api/ytclone/${videoId}`)
     .then(response => getComment(response.data))
     console.log(comment)
 
