@@ -24,10 +24,10 @@ const MainVideo =(props)=>{
                                 {comment.text}
                             </div>
                             <div>
-                            <div className="reply-box">
-                                <textarea name="reply" placeholder="Enter a reply" id="" cols="75" rows="5"></textarea>
-                                <button>Submit reply</button>
-                            </div>
+                                <div className="reply-box">
+                                    <textarea name="reply" placeholder="Enter a reply" id="" cols="75" rows="5"></textarea>
+                                    <button>Submit reply</button>
+                                </div>
                             </div>
                         </div>
                     )
