@@ -5,7 +5,7 @@ const Comments = (props)=>{
     return(
         <div className="container">
             <div className="comment-box">
-                <textarea name="comments" id="" cols="100" rows="10" placeholder="Enter a comment"></textarea>
+                <textarea name="comments" id="" cols="75" rows="5" placeholder="Enter a comment"></textarea>
                 <button>Submit comment</button>
             </div>
             <div className="replies">

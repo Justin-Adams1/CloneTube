@@ -1,0 +1,11 @@
+
+.relatedVideos{
+    border-style:solid;
+    border: 10%;
+    border-color: black;
+    padding-top: 10%;
+    padding-right: 5%;
+    margin-top: 20px;
+    width: 100%;
+    min-width: 20%;
+  }

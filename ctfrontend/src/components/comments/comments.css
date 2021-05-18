@@ -1,9 +1,10 @@
 .buttons{
-    margin-left: 95px
+    margin-left: 20px
 }
 
 .comment-box{
-    margin-left: 95px;
+    margin-left: 20px;
+    display: flex;
 }
 
 button{
@@ -14,5 +15,5 @@ textarea{
 }
 
 .replies{
-    margin-left: 350px
+    margin-left: 50px
 }

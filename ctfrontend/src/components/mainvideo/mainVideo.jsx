@@ -12,7 +12,7 @@ const MainVideo =(props)=>{
                 frameborder="0">
                 </iframe>
             </div>
-            <div>
+            <div className="ld">
                 <button>Like</button>
                 <button>Dislike</button>
             </div>
