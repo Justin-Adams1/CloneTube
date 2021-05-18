@@ -8,6 +8,8 @@ import RelatedVideos from './components/relatedVideos/relatedVideos';
 import MainVideo from './components/mainvideo/mainVideo';
 import Comments from './components/comments/comments';
 import {Key} from './key.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Container, Row, Col} from 'react-bootstrap';
 
 function App(){
 
@@ -23,10 +25,7 @@ function App(){
     axios
     .get(`https://www.googleapis.com/youtube/v3/search?q=${searchString}&key=${apiKEY}`)
     .then(response => getVideoId(response.data.items[0].id.videoId))
-    
-    // axios
-    //   .get(`http://localhost:5000/api/${videoId}`)
-    //   .then(response => getComment(response.data))
+
     
   },[searchString]);
 
@@ -40,23 +39,21 @@ function App(){
   
   const videoRef = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`
 
-  // ADD A COMMENT 
-
   return(
     <>
-      <div>
-        <Title/>
-      </div>
-      <div>
-        <SearchBar setSearchString = {setSearchString}/>
-      </div>
-      <div className="videos">
-        <MainVideo videoRef = {videoRef}/>
-        <RelatedVideos />
-      </div>
-      <div>
-        <Comments videoComments = {comment}/>
-      </div>
+     <Container fluid>
+            <Row>
+              <Col>
+                <Title/>
+                <SearchBar setSearchString = {setSearchString}/>
+                <MainVideo videoRef = {videoRef}/>
+                <Comments videoComments = {comment}/>
+              </Col>
+              <Col>
+                <RelatedVideos relatedVideos = {relatedVideos}/>
+              </Col>
+            </Row>
+          </Container>
     </>
   )
   }
