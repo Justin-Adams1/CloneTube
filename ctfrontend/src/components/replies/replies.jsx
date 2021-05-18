@@ -5,6 +5,8 @@ const Replies =()=>{
         <div>
             <div className="reply-box">
                 <textarea name="reply" placeholder="Enter a reply" id="" cols="75" rows="5"></textarea>
+                </div>
+                <div>
                 <button>Submit reply</button>
             </div>
         </div>

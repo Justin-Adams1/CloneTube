@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {Comment, Reply} = require('../models/comment')
 
-// GET ALL COMMENTS
+// GET A COMMENTS
 
 router.get('/:videoId', async (req,res)=>{
     try{

@@ -21,7 +21,7 @@ function App(){
   const [relatedVideos, getRelatedVideos] = useState([]);
   const apiKEY = Key;
   
-  useEffect(()=>{
+  useEffect(()=>{ // get search videoId
     axios
     .get(`https://www.googleapis.com/youtube/v3/search?q=${searchString}&key=${apiKEY}`)
     .then(response => getVideoId(response.data.items[0].id.videoId))
@@ -29,11 +29,19 @@ function App(){
     
   },[searchString]);
 
-  useEffect(()=>{
+  useEffect(()=>{ //get related videos
     axios
     .get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${searchString}&key=${apiKEY}`)
     .then(response => getRelatedVideos(response.data.items))
     console.log(relatedVideos)
+
+  }, [searchString])
+
+  useEffect(()=>{ //get attached comment
+    axios
+    .get(`http://localhost:5000/api/ytclone/JuYeHPFR3f0`)
+    .then(response => getComment(response.data))
+    console.log(comment)
 
   }, [searchString])
   
