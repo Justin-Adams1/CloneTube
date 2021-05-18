@@ -17,7 +17,7 @@ function App(){
   // const [videoId, getVideoId] = useState('');
   const videoId = "JuYeHPFR3f0"
   const [comment, getComment] = useState([]);
-  const [searchString, setSearchString] = useState('');
+  const [searchString, setSearchString] = useState('pokemon');
   const [relatedVideos, getRelatedVideos] = useState([]);
   const apiKEY = Key;
   
@@ -31,7 +31,7 @@ function App(){
 
   useEffect(()=>{ //get related videos
     axios
-    .get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${searchString}&key=${apiKEY}`)
+    .get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${searchString}&key=${apiKEY}/`)
     .then(response => getRelatedVideos(response.data))
     console.log(relatedVideos)
 
@@ -43,14 +43,14 @@ function App(){
     .then(response => getComment(response.data))
     console.log(comment)
     
-  }, [comment]);
+  }, []);
   
   const addNewComment=(newComment)=>{
      axios.post(`http://localhost:5000/api/ytclone/JuYeHPFR3f0`, newComment)
      .then(response=>getComment(response.data))
   }
   
-  const videoRef = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`
+  const videoRef = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com/`
   
   return(
     <>
