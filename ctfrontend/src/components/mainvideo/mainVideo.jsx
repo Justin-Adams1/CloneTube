@@ -15,6 +15,23 @@ const MainVideo =(props)=>{
             <div className="ld">
                 <button>Like</button>
                 <button>Dislike</button>
+            </div> 
+            <div>
+                {props.comments.map((comment)=>{
+                    return(
+                        <div>
+                            <div>
+                                {comment.text}
+                            </div>
+                            <div>
+                            <div className="reply-box">
+                                <textarea name="reply" placeholder="Enter a reply" id="" cols="75" rows="5"></textarea>
+                                <button>Submit reply</button>
+                            </div>
+                            </div>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )
