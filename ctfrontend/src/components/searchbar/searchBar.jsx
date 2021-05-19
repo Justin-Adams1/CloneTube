@@ -12,6 +12,7 @@ const SearchBar = (props) => {
     }
      return(
         <div className="searchbar">
+            <h1>MyTube</h1>
             <div className="search-object">
                 <input type="text" name="search" id="" value={search} placeholder="Search for video" className="seachbox" onChange={handleChange}/> 
                 <button onClick={handleClick}>Search</button>

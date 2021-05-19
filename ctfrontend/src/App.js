@@ -2,7 +2,6 @@ import {useState} from 'react';
 import {useEffect} from 'react';
 import './App.css';
 import axios from 'axios';
-import Title from './components/title/title'
 import SearchBar from './components/searchbar/searchBar'
 import RelatedVideos from './components/relatedVideos/relatedVideos';
 import MainVideo from './components/mainvideo/mainVideo';
@@ -33,9 +32,9 @@ function App(){
     .then(response => getRelatedVideos(response.data))
     console.log(relatedVideos)
 
-    axios
-    .get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=JuYeHPFR3f0&type=video&key=${apiKEY}`)
-    .then(response => getRelatedVideos(response))
+    // axios
+    // .get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=JuYeHPFR3f0&type=video&key=${apiKEY}`)
+    // .then(response => getRelatedVideos(response))
     
     axios
     .get(`http://localhost:5000/api/ytclone/${videoId}`)
@@ -66,7 +65,6 @@ function App(){
      <Container fluid>
             <Row>
               <Col>
-                <Title/>
                 <SearchBar setSearchString = {setSearchString}/>
                 <MainVideo videoRef = {videoRef} comments={comment}/>
                 <Comments videoId={videoId} addNewComment={addNewComment}/>
