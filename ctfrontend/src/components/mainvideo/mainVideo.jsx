@@ -18,6 +18,12 @@ const MainVideo =(props)=>{
             </div> 
             <div>
                 {props.comments.map((comment)=>{
+                    if(comment.length==0){
+                        return(
+                            <div>
+                            </div>
+                        )
+                    }
                     return(
                         <div>
                             <div>

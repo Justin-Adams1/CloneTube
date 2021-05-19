@@ -25,7 +25,7 @@ function App(){
   const [relatedVideos, getRelatedVideos] = useState([]);
   const apiKEY = Key;
   
-  // useEffect(()=>{
+  useEffect(()=>{
   //   axios
   //   .get(`https://www.googleapis.com/youtube/v3/search?q=${searchString}&key=${apiKEY}`)
   //   .then(response => getVideoId(response.data.items[0].id.videoId))
@@ -41,14 +41,18 @@ function App(){
   //   axios
   //   .get(`http://localhost:5000/api/ytclone/${videoId}`)
   //   .then(response => getComment(response.data))
-    
-  // },[searchString, apiKEY, relatedVideos, videoId]);  
   
-  const addNewComment=(newComment)=>{
-    axios.post(`http://localhost:5000/api/ytclone/JuYeHPFR3f0`, newComment)
-    .then(response=>getComment(response.data))
-  }
-  // useEffect(() => {
+  getVideoId(searchResults.items[0].id.videoId)
+  
+},[]);  
+
+const addNewComment=(newComment)=>{
+axios.post(`http://localhost:5000/api/ytclone/${videoId}`, newComment)
+.then(response=>getComment(response.data))
+}
+
+
+// useEffect(() => {
   //   const getAllPeople = async () => {
   //     const { data } = await axios.get("https://swapi.dev/api/people");
   //     setPeople(data.results);
@@ -58,8 +62,6 @@ function App(){
   //   };
   //   getAllPeople();
   // }, []);
-
-  console.log(relatedVideos)
   const videoRef = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`
   
   return(
