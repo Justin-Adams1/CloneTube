@@ -8,6 +8,7 @@ import MainVideo from './components/mainvideo/mainVideo';
 import Comments from './components/comments/comments';
 import {Key} from './key.js';
 import {Container, Row, Col} from 'react-bootstrap';
+import SearchResults from './videoResults';
 
 
 
@@ -15,6 +16,7 @@ import {Container, Row, Col} from 'react-bootstrap';
 function App(){
   
   // const apiKEY = config.apiKEY
+  const searchResults = SearchResults;
   
   const [videoId, getVideoId] = useState('');
   // const videoId = "JuYeHPFR3f0"
@@ -23,24 +25,24 @@ function App(){
   const [relatedVideos, getRelatedVideos] = useState([]);
   const apiKEY = Key;
   
-  useEffect(()=>{
-    axios
-    .get(`https://www.googleapis.com/youtube/v3/search?q=${searchString}&key=${apiKEY}`)
-    .then(response => getVideoId(response.data.items[0].id.videoId))
-    axios
-    .get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${searchString}&key=${apiKEY}/`)
-    .then(response => getRelatedVideos(response.data))
-    console.log(relatedVideos)
+  // useEffect(()=>{
+  //   axios
+  //   .get(`https://www.googleapis.com/youtube/v3/search?q=${searchString}&key=${apiKEY}`)
+  //   .then(response => getVideoId(response.data.items[0].id.videoId))
+  //   axios
+  //   .get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${searchString}&key=${apiKEY}/`)
+  //   .then(response => getRelatedVideos(response.data))
+  //   console.log(relatedVideos)
 
-    axios
-    .get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=JuYeHPFR3f0&type=video&key=${apiKEY}`)
-    .then(response => getRelatedVideos(response))
+  //   axios
+  //   .get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=JuYeHPFR3f0&type=video&key=${apiKEY}`)
+  //   .then(response => getRelatedVideos(response))
     
-    axios
-    .get(`http://localhost:5000/api/ytclone/${videoId}`)
-    .then(response => getComment(response.data))
+  //   axios
+  //   .get(`http://localhost:5000/api/ytclone/${videoId}`)
+  //   .then(response => getComment(response.data))
     
-  },[searchString, apiKEY, relatedVideos, videoId]);  
+  // },[searchString, apiKEY, relatedVideos, videoId]);  
   
   const addNewComment=(newComment)=>{
     axios.post(`http://localhost:5000/api/ytclone/JuYeHPFR3f0`, newComment)
