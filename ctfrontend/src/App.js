@@ -11,15 +11,11 @@ import {Container, Row, Col} from 'react-bootstrap';
 import SearchResults from './videoResults';
 
 
-
-
-
 function App(){
-  
   // const apiKEY = config.apiKEY
   const searchResults = SearchResults;
   const [dataReady, setDataReady] = useState(false)
-  const [videoId, setVideoId] = useState('');
+  const [videoId, setVideoId] = useState(searchResults.items[0].id.videoId);
   // const videoId = "JuYeHPFR3f0"
   const [comments, setComments] = useState([]);
   const [searchString, setSearchString] = useState('pokemon');
@@ -43,42 +39,26 @@ function App(){
   //   .get(`http://localhost:5000/api/ytclone/${videoId}`)
   //   .then(response => getComment(response.data))
   
- 
-  setVideoId(searchResults.items[0].id.videoId)
-  
+  //setDataReady(true)
+},[]);
+
+useEffect(()=>{  
   axios.get(`http://localhost:5000/api/ytclone/${videoId}`)
   .then(response=> setComments(response.data))
+},[]);
 
-  //setDataReady(true)
-},[comments]);
+// useEffect(()=>{
+
+  
+// },[]);
 
 
 const addNewComment=(newComment)=>{
 axios.post(`http://localhost:5000/api/ytclone/${videoId}`, newComment)
 .then(response=>setComments(response.data))
-
-
 }
 
-
-// useEffect(() => {
-  //   const getAllPeople = async () => {
-  //     const { data } = await axios.get("https://swapi.dev/api/people");
-  //     setPeople(data.results);
-  //     setIsLoaded(true);
-  //     console.log(data.results);
-  //     console.log(people);
-  //   };
-  //   getAllPeople();
-  // }, []);
   const videoRef = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`
-  // if (dataReady == false){
-  //   return(
-  //     <div>
-
-  //     </div>
-  //   )
-  // }else{
     return(
       <>
        <Container fluid>
@@ -95,9 +75,6 @@ axios.post(`http://localhost:5000/api/ytclone/${videoId}`, newComment)
             </Container>
       </>
     )
-    
-  
   }
-
 
 export default App;
