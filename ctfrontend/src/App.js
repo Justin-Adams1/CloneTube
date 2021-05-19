@@ -32,9 +32,9 @@ function App(){
     .then(response => getRelatedVideos(response.data))
     console.log(relatedVideos)
 
-    // axios
-    // .get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=JuYeHPFR3f0&type=video&key=${apiKEY}`)
-    // .then(response => getRelatedVideos(response))
+    axios
+    .get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=JuYeHPFR3f0&type=video&key=${apiKEY}`)
+    .then(response => getRelatedVideos(response))
     
     axios
     .get(`http://localhost:5000/api/ytclone/${videoId}`)
