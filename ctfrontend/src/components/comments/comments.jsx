@@ -1,5 +1,4 @@
 import './comments.css';
-import Replies from '../replies/replies'
 import {useState} from 'react';
 
 const Comments = (props)=>{

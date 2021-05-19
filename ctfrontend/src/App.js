@@ -24,10 +24,11 @@ function App(){
   const [relatedVideos, getRelatedVideos] = useState([]);
   const apiKEY = Key;
   
-  useEffect(()=>{ // get search videoId
+  useEffect(()=>{
     axios
     .get(`https://www.googleapis.com/youtube/v3/search?q=${searchString}&key=${apiKEY}`)
     .then(response => getVideoId(response.data.items[0].id.videoId))
+    axios
     .get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${searchString}&key=${apiKEY}/`)
     .then(response => getRelatedVideos(response.data))
     console.log(relatedVideos)
@@ -40,8 +41,7 @@ function App(){
     .get(`http://localhost:5000/api/ytclone/${videoId}`)
     .then(response => getComment(response.data))
     
-  },[searchString]);  
-  }, []);
+  },[searchString, apiKEY, relatedVideos, videoId]);  
   
   const addNewComment=(newComment)=>{
     axios.post(`http://localhost:5000/api/ytclone/JuYeHPFR3f0`, newComment)
@@ -60,8 +60,6 @@ function App(){
 
   console.log(relatedVideos)
   const videoRef = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`
-  
-  const videoRef = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com/`
   
   return(
     <>

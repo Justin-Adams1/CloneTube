@@ -1,4 +1,4 @@
-import { PromiseProvider } from 'mongoose';
+// import { PromiseProvider } from 'mongoose';
 import './mainvideo.css'
 const MainVideo =(props)=>{
     return(
