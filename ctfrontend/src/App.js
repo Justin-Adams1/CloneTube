@@ -13,14 +13,15 @@ import SearchResults from './videoResults';
 
 
 
+
 function App(){
   
   // const apiKEY = config.apiKEY
   const searchResults = SearchResults;
-  
-  const [videoId, getVideoId] = useState('');
+  const [dataReady, setDataReady] = useState(false)
+  const [videoId, setVideoId] = useState('');
   // const videoId = "JuYeHPFR3f0"
-  const [comment, getComment] = useState([]);
+  const [comments, setComments] = useState([]);
   const [searchString, setSearchString] = useState('pokemon');
   const [relatedVideos, getRelatedVideos] = useState([]);
   const apiKEY = Key;
@@ -42,13 +43,21 @@ function App(){
   //   .get(`http://localhost:5000/api/ytclone/${videoId}`)
   //   .then(response => getComment(response.data))
   
-  getVideoId(searchResults.items[0].id.videoId)
+ 
+  setVideoId(searchResults.items[0].id.videoId)
   
-},[]);  
+  axios.get(`http://localhost:5000/api/ytclone/${videoId}`)
+  .then(response=> setComments(response.data))
+
+  //setDataReady(true)
+},[comments]);
+
 
 const addNewComment=(newComment)=>{
 axios.post(`http://localhost:5000/api/ytclone/${videoId}`, newComment)
-.then(response=>getComment(response.data))
+.then(response=>setComments(response.data))
+
+
 }
 
 
@@ -63,23 +72,31 @@ axios.post(`http://localhost:5000/api/ytclone/${videoId}`, newComment)
   //   getAllPeople();
   // }, []);
   const videoRef = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`
+  // if (dataReady == false){
+  //   return(
+  //     <div>
+
+  //     </div>
+  //   )
+  // }else{
+    return(
+      <>
+       <Container fluid>
+              <Row>
+                <Col>
+                  <SearchBar setSearchString = {setSearchString}/>
+                  <MainVideo videoRef = {videoRef} comments={comments}/>
+                  <Comments videoId={videoId} addNewComment={addNewComment}/>
+                </Col>
+                <Col>
+                  <RelatedVideos relatedVideos = {relatedVideos}/>
+                </Col>
+              </Row>
+            </Container>
+      </>
+    )
+    
   
-  return(
-    <>
-     <Container fluid>
-            <Row>
-              <Col>
-                <SearchBar setSearchString = {setSearchString}/>
-                <MainVideo videoRef = {videoRef} comments={comment}/>
-                <Comments videoId={videoId} addNewComment={addNewComment}/>
-              </Col>
-              <Col>
-                <RelatedVideos relatedVideos = {relatedVideos}/>
-              </Col>
-            </Row>
-          </Container>
-    </>
-  )
   }
 
 

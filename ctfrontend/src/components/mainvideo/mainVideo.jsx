@@ -19,24 +19,24 @@ const MainVideo =(props)=>{
             <div>
                 {props.comments.map((comment)=>{
                     if(comment.length==0){
+                        <div>
+
+                        </div>
+                    }else{
                         return(
                             <div>
+                                <div>
+                                    {comment.text}
+                                </div>
+                                <div>
+                                    <div className="reply-box">
+                                        <textarea name="reply" placeholder="Enter a reply" id="" cols="75" rows="5"></textarea>
+                                        <button>Submit reply</button>
+                                    </div>
+                                </div>
                             </div>
                         )
                     }
-                    return(
-                        <div>
-                            <div>
-                                {comment.text}
-                            </div>
-                            <div>
-                                <div className="reply-box">
-                                    <textarea name="reply" placeholder="Enter a reply" id="" cols="75" rows="5"></textarea>
-                                    <button>Submit reply</button>
-                                </div>
-                            </div>
-                        </div>
-                    )
                 })}
             </div>
         </div>
