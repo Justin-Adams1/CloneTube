@@ -18,7 +18,7 @@ const MainVideo =(props)=>{
             </div> 
             <div>
                 {props.comments.map((comment)=>{
-                    if(comment.length==0){
+                    if(comment.length===0){
                         <div>
 
                         </div>
