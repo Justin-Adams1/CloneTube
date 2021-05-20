@@ -11,6 +11,7 @@ import {Container, Row, Col} from 'react-bootstrap';
 import SearchResults from './videoResults';
 
 
+
 function App(){
   // const apiKEY = config.apiKEY
   const searchResults = SearchResults;
@@ -21,6 +22,7 @@ function App(){
   const [searchString, setSearchString] = useState('pokemon');
   const [relatedVideos, getRelatedVideos] = useState([]);
   const apiKEY = Key;
+  const commentId= comments._id
   
   useEffect(()=>{
   //   axios
@@ -58,6 +60,22 @@ axios.post(`http://localhost:5000/api/ytclone/${videoId}`, newComment)
 .then(response=>setComments(response.data))
 }
 
+const addAReply=((reply, commentId)=>{
+  axios.post(`http://localhost:5000/api/ytclone/reply/${commentId}`, reply)
+  .then(response=>setComments(response.data))
+})
+
+const likeAVideo =(addLike)=>{
+  axios.put(`http://localhost:5000/api/ytclone/like/${videoId}`, addLike)
+  .then(response => setComments(response.data))
+}
+
+const dislikeAVideo=()=>{
+  axios.put(`http://localhost:5000/api/ytclone/dislike/${videoId}`)
+  .then(response=> setComments(response.data))
+}
+  
+
   const videoRef = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`
     return(
       <>
@@ -65,7 +83,7 @@ axios.post(`http://localhost:5000/api/ytclone/${videoId}`, newComment)
               <Row className="row">
                 <Col className="main-video">
                   <SearchBar setSearchString = {setSearchString}/>
-                  <MainVideo videoRef = {videoRef} comments={comments}/>
+                  <MainVideo videoRef = {videoRef} comments={comments} likeAVideo ={likeAVideo} dislikeAVideo={dislikeAVideo} comments={comments} addAReply={addAReply}/>
                   <Comments videoId={videoId} addNewComment={addNewComment}/>
                 </Col>
                 <Col className="related-videos">

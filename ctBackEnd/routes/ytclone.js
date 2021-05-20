@@ -31,13 +31,13 @@ router.post('/:videoId', async (req,res)=>{
 });
 
 //POST A REPLY
-router.post('/:commentId', async (req,res)=>{
+router.post('/reply/:videoId/:commentId', async (req,res)=>{
     try{
-        const comment = await Comment.findById({commentId: req.params.commentId});
+        const comment = await Comment.findById(req.params.commentId);
     
         const reply = new Reply({
-            text: req.params.body,
-            videoId: req.params.body
+            text: req.body.text,
+            videoId: req.params.videoId
         });
         await comment.save();
         const comments = await Comment.find();
@@ -49,11 +49,19 @@ router.post('/:commentId', async (req,res)=>{
 
 //PUT add a like
 
-router.put('/:videoId', async (req,res)=>{
+router.put('/like/:videoId', async (req,res)=>{
     try{
-        const comment = await Comment.findById({videoId: req.params.videoId});
-        comment.like = comment.like++;
-
+        // const comment = await Comment.findByIdAndUpdate(
+        //     comment.videoId,
+        //     { $inc: {"likes" : 1} }, 
+        // );
+        const comment = await Comment.findByIdAndUpdate(
+            req.params.videoId,
+            {
+                likes: req.body.likes
+            },
+            {new : true}
+        )
         await comment.save();
         const comments = await Comment.find()
         return res.send(comments);
@@ -63,10 +71,10 @@ router.put('/:videoId', async (req,res)=>{
 });
 //PUT add a dislike
 
-router.put('/:videoId', async (req,res)=>{
+router.put('dislike/:videoId', async (req,res)=>{
     try{
         const comment = await Comment.findById({videoId: req.params.videoId});
-        comment.dislike = comment.dislike++;
+        comment.dislikes = comment.dislikes + 1;
 
         await comment.save();
         const comments = await Comment.find()
