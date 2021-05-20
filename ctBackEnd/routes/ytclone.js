@@ -51,17 +51,8 @@ router.post('/reply/:videoId/:commentId', async (req,res)=>{
 
 router.put('/like/:videoId', async (req,res)=>{
     try{
-        // const comment = await Comment.findByIdAndUpdate(
-        //     comment.videoId,
-        //     { $inc: {"likes" : 1} }, 
-        // );
-        const comment = await Comment.findByIdAndUpdate(
-            req.params.videoId,
-            {
-                likes: req.body.likes
-            },
-            {new : true}
-        )
+        const comment = await Comment.findById();
+        comment.likes++;
         await comment.save();
         const comments = await Comment.find()
         return res.send(comments);
@@ -74,7 +65,7 @@ router.put('/like/:videoId', async (req,res)=>{
 router.put('dislike/:videoId', async (req,res)=>{
     try{
         const comment = await Comment.findById({videoId: req.params.videoId});
-        comment.dislikes = comment.dislikes + 1;
+        comment.dislikes++;
 
         await comment.save();
         const comments = await Comment.find()
