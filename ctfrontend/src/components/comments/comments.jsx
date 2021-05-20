@@ -2,7 +2,6 @@ import './comments.css';
 import {useState} from 'react';
 
 const Comments = (props)=>{
-
     const [text, setText] = useState('');
 
     const handleChange = (event) => {

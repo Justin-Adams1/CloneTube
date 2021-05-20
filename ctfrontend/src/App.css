@@ -10,4 +10,9 @@ textarea{
   background-color: white;
 }
 
+.related-videos{
+}
 
+.row{
+  display: flex;
+}
