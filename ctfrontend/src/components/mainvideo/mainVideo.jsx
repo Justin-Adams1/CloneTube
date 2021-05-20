@@ -7,7 +7,7 @@ const MainVideo =(props)=>{
                 <h2>Video Title</h2>
             </div>
             <div className="videos">
-            <iframe id="ytplayer" type="text/html" width="800" height="400"
+            <iframe id="ytplayer" type="text/html" width="700" height="400"
                 src={props.videoRef}
                 frameborder="0">
                 </iframe>

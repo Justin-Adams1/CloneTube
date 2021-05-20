@@ -62,13 +62,13 @@ axios.post(`http://localhost:5000/api/ytclone/${videoId}`, newComment)
     return(
       <>
        <Container fluid>
-              <Row>
-                <Col>
+              <Row className="row">
+                <Col className="main-video">
                   <SearchBar setSearchString = {setSearchString}/>
                   <MainVideo videoRef = {videoRef} comments={comments}/>
                   <Comments videoId={videoId} addNewComment={addNewComment}/>
                 </Col>
-                <Col>
+                <Col className="related-videos">
                   <RelatedVideos relatedVideos = {relatedVideos}/>
                 </Col>
               </Row>
