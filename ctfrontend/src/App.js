@@ -8,43 +8,38 @@ import MainVideo from "./components/mainvideo/mainVideo";
 import Comments from "./components/comments/comments";
 import { Key } from "./key.js";
 import { Container, Row, Col } from "react-bootstrap";
-import SearchResults from "./videoResults";
+// import SearchResults from "./videoResults";
 
 function App() {
   // const apiKEY = config.apiKEY
-  const searchResults = SearchResults;
-  const [dataReady, setDataReady] = useState(false);
-  const [videoId, setVideoId] = useState(searchResults.items[0].id.videoId);
+  // const searchResults = SearchResults;
+  const [videoId, setVideoId] = useState('');
   // const videoId = "JuYeHPFR3f0"
   const [comments, setComments] = useState([]);
-  const [searchString, setSearchString] = useState("pokemon");
+  const [searchString, setSearchString] = useState("");
   const [relatedVideos, getRelatedVideos] = useState([]);
   const apiKEY = Key;
   const commentId = comments._id;
 
   useEffect(() => {
     axios
-      .get(
-        `https://www.googleapis.com/youtube/v3/search?q=${searchString}&key=${apiKEY}`
-      )
+      .get(`https://www.googleapis.com/youtube/v3/search?q=${searchString}&key=${apiKEY}`)
       .then((response) => setVideoId(response.data.items[0].id.videoId));
-    setDataReady(true);
-  }, []);
+      console.log(videoId)
+  }, [searchString]);
 
   useEffect(() => {
     axios
       .get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}type=video&part=snippet&key=${apiKEY}`)
       .then((response) => getRelatedVideos(response));
-    setDataReady(true);
     console.log((relatedVideos));
-  }, []);
+  }, [videoId]);
 
   useEffect(() => {
     axios
       .get(`http://localhost:5000/api/ytclone/${videoId}`)
       .then((response) => setComments(response.data));
-    setDataReady(true);
-  }, []);
+  }, [comments, videoId]);
 
   // useEffect(()=>{
 

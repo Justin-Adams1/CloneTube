@@ -5,6 +5,7 @@ const SearchBar = (props) => {
   const [search, setSearch] = useState("");
   const handleChange = (event) => {
     setSearch(event.target.value);
+    console.log(search)
   };
 
     const handleClick = ()=>{
