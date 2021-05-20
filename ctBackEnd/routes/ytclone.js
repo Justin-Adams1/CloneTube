@@ -66,7 +66,6 @@ router.put('dislike/:videoId', async (req,res)=>{
     try{
         const comment = await Comment.findById({videoId: req.params.videoId});
         comment.dislikes++;
-
         await comment.save();
         const comments = await Comment.find()
         return res.send(comments);
