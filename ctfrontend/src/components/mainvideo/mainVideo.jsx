@@ -48,17 +48,17 @@ const MainVideo =(props)=>{
                             <div>
                                 <div key={comment._id}>
                                     {comment.text}
-                                    <div className="ld">
-                                        <button onClick={()=>handleLike(comment._id)}>Likes: {comment.likes}</button>
-                                        <button onClick={()=>handleDislike(comment._id)}>Dislikes: {comment.dislikes}</button>
-                                    </div> 
-                                </div>
                                 <div>
                                     {comment.replies.map((reply)=>{
                                         <div>
                                             {reply}
                                         </div>
                                     })}
+                                </div>
+                                    <div className="ld">
+                                        <button onClick={()=>handleLike(comment._id)}>Likes: {comment.likes}</button>
+                                        <button onClick={()=>handleDislike(comment._id)}>Dislikes: {comment.dislikes}</button>
+                                    </div> 
                                 </div>
                                 <div>
                                     <div className="reply-box">
