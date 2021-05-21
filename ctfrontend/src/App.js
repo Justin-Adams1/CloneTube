@@ -40,12 +40,13 @@ function App() {
     axios
       .get(`http://localhost:5000/api/ytclone/${videoId}`)
       .then((response) => setComments(response.data));
+      console.log(videoId)
   }, [videoId]);
 
   // useEffect(()=>{
 
   // },[]);
-  console.log(relatedVideos)
+
 
   const addNewComment = (newComment) => {
     axios
@@ -70,6 +71,10 @@ function App() {
       .put(`http://localhost:5000/api/ytclone/dislike/${commentId}`)
       .then((response) => setComments(response.data));
   };
+
+  const changeVideo=(videoId) =>{
+    setVideoId(videoId)
+  }
  
   const videoRef = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`;
   return (
@@ -88,7 +93,7 @@ function App() {
             <Comments videoId={videoId} addNewComment={addNewComment} />
           </Col>
           <Col className="related-videos">
-            <RelatedVideos relatedVideos={relatedVideos} />
+            <RelatedVideos relatedVideos={relatedVideos} changeVideo={changeVideo}/>
           </Col>
         </Row>
       </Container>
