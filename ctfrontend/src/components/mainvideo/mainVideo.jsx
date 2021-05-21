@@ -6,16 +6,12 @@ const MainVideo =(props)=>{
     const [likes, setlikes]=useState(0)
     const [text, setText]=useState('')
 
-    const handleLike=()=>{
-        const addlike = {
-            likes: likes + 1
-        }
-        props.likeAVideo(addlike)
-        setlikes(0)
+    const handleLike=(commentId)=>{
+        props.likeAVideo(commentId)
     }
 
-    const handleDislike=()=>{
-        props.dislikeAVideo()
+    const handleDislike=(commentId)=>{
+        props.dislikeAVideo(commentId)
     }
 
     const handleChange = (event) => {
@@ -41,10 +37,6 @@ const MainVideo =(props)=>{
                 frameborder="0">
                 </iframe>
             </div>
-            <div className="ld">
-                <button onClick={handleLike}>Likes: {props.comments.likes}</button>
-                <button onClick={handleDislike}>Dislikes: {props.comments.dislikes}</button>
-            </div> 
             <div>
                 {props.comments.map((comment)=>{
                     if(comment.length===0){
@@ -56,6 +48,10 @@ const MainVideo =(props)=>{
                             <div>
                                 <div key={comment._id}>
                                     {comment.text}
+                                    <div className="ld">
+                                        <button onClick={()=>handleLike(comment._id)}>Likes: {comment.likes}</button>
+                                        <button onClick={()=>handleDislike(comment._id)}>Dislikes: {comment.dislikes}</button>
+                                    </div> 
                                 </div>
                                 <div>
                                     {comment.replies.map((reply)=>{

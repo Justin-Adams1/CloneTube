@@ -20,7 +20,7 @@ function App() {
   const [searchString, setSearchString] = useState("");
   const [relatedVideos, getRelatedVideos] = useState(RelatedResults.items);
   // const apiKEY = Key;
-  const commentId = comments._id;
+
 
   // useEffect(() => {
   //   axios
@@ -36,11 +36,11 @@ function App() {
   //   console.log((relatedVideos));
   // }, [videoId]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://localhost:5000/api/ytclone/${videoId}`)
-  //     .then((response) => setComments(response.data));
-  // }, [comments, videoId]);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/ytclone/${videoId}`)
+      .then((response) => setComments(response.data));
+  }, [videoId]);
 
   // useEffect(()=>{
 
@@ -51,26 +51,26 @@ function App() {
     axios
       .post(`http://localhost:5000/api/ytclone/${videoId}`, newComment)
       .then((response) => setComments(response.data));
-  };
-
+  }
   const addAReply = (reply, commentId) => {
     axios
       .post(`http://localhost:5000/api/ytclone/reply/${commentId}`, reply)
       .then((response) => setComments(response.data));
   };
 
-  const likeAVideo = () => {
+  const likeAVideo = (commentId) => {
     axios
-      .put(`http://localhost:5000/api/ytclone/like/${videoId}`)
+      .put(`http://localhost:5000/api/ytclone/like/${commentId}`)
       .then((response) => setComments(response.data));
+      console.log(commentId)
   };
 
-  const dislikeAVideo = () => {
+  const dislikeAVideo = (commentId) => {
     axios
-      .put(`http://localhost:5000/api/ytclone/dislike/${videoId}`)
+      .put(`http://localhost:5000/api/ytclone/dislike/${commentId}`)
       .then((response) => setComments(response.data));
   };
-
+ 
   const videoRef = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`;
   return (
     <>

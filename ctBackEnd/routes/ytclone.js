@@ -49,9 +49,9 @@ router.post('/reply/:videoId/:commentId', async (req,res)=>{
 
 //PUT add a like
 
-router.put('/like/:videoId', async (req,res)=>{
+router.put('/like/:commentId', async (req,res)=>{
     try{
-        const comment = await Comment.findById();
+        const comment = await Comment.findById(req.params.commentId);
         comment.likes++;
         await comment.save();
         const comments = await Comment.find()
@@ -62,9 +62,9 @@ router.put('/like/:videoId', async (req,res)=>{
 });
 //PUT add a dislike
 
-router.put('dislike/:videoId', async (req,res)=>{
+router.put('dislike/:commentId', async (req,res)=>{
     try{
-        const comment = await Comment.findById({videoId: req.params.videoId});
+        const comment = await Comment.findById(req.params.commentId);
         comment.dislikes++;
         await comment.save();
         const comments = await Comment.find()
