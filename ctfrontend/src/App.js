@@ -40,7 +40,7 @@ function App() {
     axios
       .get(`http://localhost:5000/api/ytclone/${videoId}`)
       .then((response) => setComments(response.data));
-  }, [comments.likes, comments.dislikes, comments.replies]);
+  }, [videoId]);
 
   // useEffect(()=>{
 
@@ -54,7 +54,7 @@ function App() {
   }
   const addAReply = (reply, commentId) => {
     axios
-      .post(`http://localhost:5000/api/ytclone/reply/${videoId}/${commentId}`, reply)
+      .post(`http://localhost:5000/api/ytclone/reply/${commentId}`, reply)
       .then((response) => setComments(response.data));
   };
 

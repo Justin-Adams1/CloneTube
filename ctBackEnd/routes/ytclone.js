@@ -31,11 +31,12 @@ router.post('/:videoId', async (req,res)=>{
 });
 
 //POST A REPLY
-router.post('/reply/:videoId/:commentId', async (req,res)=>{
+router.post('/reply/:commentId', async (req,res)=>{
     try{
         const comment = await Comment.findById(req.params.commentId);
-        const reply = new Reply({
-            text: req.body.text
+        comment.reply = new Reply({
+            text: req.body.text,
+            commentId: req.params.commentId
         });
         await comment.save();
         const comments = await Comment.find();
