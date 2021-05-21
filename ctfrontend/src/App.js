@@ -15,11 +15,11 @@ function App() {
   // const apiKEY = config.apiKEY
   const searchResults = SearchResults;
   const relatedResults = RelatedResults;
-  const [videoId, setVideoId] = useState('JuYeHPFR3f0');
+  const [videoId, setVideoId] = useState(SearchResults.items[0].id.videoId);
   const [comments, setComments] = useState([]);
   const [searchString, setSearchString] = useState("");
-  const [relatedVideos, getRelatedVideos] = useState([]);
-  const apiKEY = Key;
+  const [relatedVideos, getRelatedVideos] = useState(RelatedResults.items);
+  // const apiKEY = Key;
   const commentId = comments._id;
 
   // useEffect(() => {
@@ -45,6 +45,7 @@ function App() {
   // useEffect(()=>{
 
   // },[]);
+  console.log(relatedVideos)
 
   const addNewComment = (newComment) => {
     axios
