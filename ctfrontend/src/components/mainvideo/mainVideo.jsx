@@ -1,4 +1,5 @@
 // import { PromiseProvider } from 'mongoose';
+import { disconnect } from 'process'
 import { useState } from 'react'
 import './mainvideo.css'
 const MainVideo =(props)=>{
@@ -37,6 +38,9 @@ const MainVideo =(props)=>{
                 </iframe>
             </div>
             <div>
+                <h3>Comments:</h3>
+            </div>
+            <div>
                 {props.comments.map((comment)=>{
                     if(comment.length===0){
                         <div>
@@ -46,20 +50,31 @@ const MainVideo =(props)=>{
                         return(
                             <div>
                                 <div key={comment._id}>
-                                    {comment.text}
-                                    <div className="ld">
-                                        <button onClick={()=>handleLike(comment._id)}>Likes: {comment.likes}</button>
-                                        <button onClick={()=>handleDislike(comment._id)}>Dislikes: {comment.dislikes}</button>
-                                    </div> 
-                                <div>
-                                    {comment.replies.map((reply)=>{
-                                        return(
-                                            <div>
-                                                {reply.text}
-                                            </div>
-                                        )
-                                    })}
-                                </div>
+                                    <div>
+                                    </div>
+                                    <div className="comment-buttons">
+                                        <div className="comment-text">
+                                            <h5>{comment.text}</h5>
+                                        </div>
+                                        <div className="ld">
+                                            <button onClick={()=>handleLike(comment._id)}>Comment Likes: {comment.likes}</button>
+                                            <button onClick={()=>handleDislike(comment._id)}>Comment Dislikes: {comment.dislikes}</button>
+                                        </div> 
+                                    </div>
+                                    <div>
+                                        {comment.replies.map((reply)=>{
+                                            return(
+                                                <div>
+                                                    <div className="reply-title">
+                                                        <h5>Reply</h5>
+                                                    </div>
+                                                    <div className="reply-text">
+                                                        {reply.text}
+                                                    </div>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
                                 </div>
                                 <div>
                                     <div className="reply-box">

@@ -8,4 +8,12 @@
     margin-top: 20px;
     width: 100%;
     min-width: 20%;
+    background-color:darkred;
+    padding-left: 20px;
+    padding-bottom: 10%;
   }
+
+.related-video-card{
+  border-style: solid;
+  border-width: 3px;
+}
