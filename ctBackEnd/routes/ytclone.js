@@ -6,7 +6,7 @@ const {Comment, Reply} = require('../models/comment')
 
 router.get('/:videoId', async (req,res)=>{
     try{
-        const comment = await Comment.findById(req.params.videoId);
+        const comment = await Comment.find({videoId: req.params.videoId});
         return res.send(comment);
     }catch(ex){
         return res.status(500).send(`Internal Server Error: ${ex}`);
