@@ -3,17 +3,29 @@
     border-style:solid;
     border: 10%;
     border-color: black;
-    padding-top: 10%;
+    padding-top: 5px;
     padding-right: 5%;
     margin-top: 20px;
-    width: 100%;
+    width: auto;
     min-width: 20%;
+    max-width: 60%;
     background-color:darkred;
     padding-left: 20px;
     padding-bottom: 10%;
+    border-radius: 5px;
   }
 
 .related-video-card{
   border-style: solid;
   border-width: 3px;
+}
+.relatedHeader{
+    color: white;
+    background-color: darkred;
+
+}
+.relatedVideoTitle{
+    size: 12px;
+    font-size: large;
+    width:fit-content;
 }

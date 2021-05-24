@@ -43,9 +43,9 @@ function App() {
       console.log(videoId)
   }, [videoId]);
 
-  // useEffect(()=>{
+  useEffect(()=>{
 
-  // },[]);
+  },[comments.replies]);
 
 
   const addNewComment = (newComment) => {

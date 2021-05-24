@@ -21,3 +21,17 @@
 .reply-title{
     margin-left: 45px;
 }
+.comment-box{
+    width: auto;
+    height: auto;
+    border: 2%;
+    border-color: black;
+    border-style: solid;
+    margin-bottom: 10px;
+}
+.hrClass{
+    border-top: 5px solid black;
+    width: 110%;
+    position: relative;
+    border-style:groove;
+}

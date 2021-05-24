@@ -19,7 +19,7 @@ const Comments = (props)=>{
 
     return(
         <div className="container">
-            <div className="comment-box">
+            <div>
                 <textarea name="comments" id="" value={text} cols="75" rows="5" placeholder="Enter a comment" onChange={handleChange} ></textarea>
                 </div>
                 <div className="replyButton">

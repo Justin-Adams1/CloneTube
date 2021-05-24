@@ -78,10 +78,11 @@ const MainVideo =(props)=>{
                                 </div>
                                 <div>
                                     <div className="reply-box">
-                                        <textarea name="reply" placeholder="Enter a reply" id="" cols="75" rows="5" onChange={handleChange}></textarea>
+                                        <textarea name="reply" placeholder="Enter a reply" id="" cols="75" rows="2" onChange={handleChange}></textarea>
                                         <button onClick={()=>handleClick(comment._id)}>Submit reply</button>
                                     </div>
                                 </div>
+                                <hr className="hrClass"/>
                             </div>
                         )
                     }
